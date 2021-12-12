@@ -20,7 +20,7 @@ package com.github.zjcong.metis.experiments.simple
 
 import com.github.zjcong.metis.EntryPolicy
 import com.github.zjcong.metis.execution.RelayExecution
-import com.github.zjcong.metis.execution.DefaultExecution
+import com.github.zjcong.metis.execution.SimpleExecution
 import com.github.zjcong.metis.experiments.benchmark.Schwefel
 import com.github.zjcong.metis.samplers.CovarianceMatrixAdaption
 import com.github.zjcong.metis.samplers.DifferentialEvolution
@@ -46,7 +46,7 @@ fun main() {
 
     val simpleExperiment = SimpleExperiment<DoubleArray>(names) { name, monitor ->
         when (name) {
-            "CMA-ES" -> DefaultExecution(
+            "CMA-ES" -> SimpleExecution(
                 name = name,
                 problem = problem,
                 sampler = CovarianceMatrixAdaption(problem.dimensions, population),

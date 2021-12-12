@@ -33,7 +33,7 @@ open class RelayExecution<T>(
     monitor: Monitor<T>,
     populationSize: Int = problem.dimensions * 10,
     entryPolicy: EntryPolicy = EntryPolicy.CLOSED_BORDER
-) : DefaultExecution<T>(name, problem, monitor, samplers[0], populationSize, entryPolicy) {
+) : SimpleExecution<T>(name, problem, monitor, samplers[0], populationSize, entryPolicy) {
 
     /**
      * Number of iterations of unchanged best fitness

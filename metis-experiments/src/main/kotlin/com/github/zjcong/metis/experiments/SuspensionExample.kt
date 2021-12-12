@@ -22,7 +22,7 @@ import com.github.zjcong.metis.DefaultMonitor
 import com.github.zjcong.metis.execution.Execution
 import com.github.zjcong.metis.EntryPolicy
 import com.github.zjcong.metis.LogLevel
-import com.github.zjcong.metis.execution.DefaultExecution
+import com.github.zjcong.metis.execution.SimpleExecution
 import com.github.zjcong.metis.experiments.benchmark.SumOfDifferentPowers
 import com.github.zjcong.metis.samplers.DifferentialEvolution
 import java.io.File
@@ -31,7 +31,7 @@ import java.io.File
 fun main() {
 
 
-    val engine = DefaultExecution(
+    val engine = SimpleExecution(
         name = "Default DE",
         problem = SumOfDifferentPowers(100),
         sampler = DifferentialEvolution(

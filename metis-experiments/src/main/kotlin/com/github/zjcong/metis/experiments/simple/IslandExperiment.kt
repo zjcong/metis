@@ -21,7 +21,7 @@ package com.github.zjcong.metis.experiments.simple
 
 import com.formdev.flatlaf.FlatLightLaf
 import com.github.zjcong.metis.*
-import com.github.zjcong.metis.execution.DefaultExecution
+import com.github.zjcong.metis.execution.SimpleExecution
 import com.github.zjcong.metis.execution.Execution
 import com.github.zjcong.metis.execution.RelayExecution
 import com.github.zjcong.metis.execution.RestartExecution
@@ -67,22 +67,22 @@ fun <T> experiment(problem: Problem<T>, population: Int): XYChart? {
 
     val simpleExperiment = SimpleExperiment(names) { name, monitor: Monitor<T> ->
         when (name) {
-            "DE" -> DefaultExecution(
+            "DE" -> SimpleExecution(
                 name = name, problem = problem, sampler = DifferentialEvolution(problem.dimensions), monitor = monitor
             )
-            "PSO" -> DefaultExecution(
+            "PSO" -> SimpleExecution(
                 name = name,
                 problem = problem,
                 sampler = ParticleSwampOptimization(problem.dimensions),
                 monitor = monitor
             )
-            "CMAES" -> DefaultExecution(
+            "CMAES" -> SimpleExecution(
                 name = name,
                 problem = problem,
                 sampler = CovarianceMatrixAdaption(problem.dimensions),
                 monitor = monitor
             )
-            "GA" -> DefaultExecution(
+            "GA" -> SimpleExecution(
                 name = name, problem = problem, sampler = GeneticAlgorithm(problem.dimensions), monitor = monitor
             )
             "Islands" -> CompetitiveIslandExecution(

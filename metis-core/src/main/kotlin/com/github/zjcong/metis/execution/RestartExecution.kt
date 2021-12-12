@@ -33,7 +33,7 @@ open class RestartExecution<T>(
     protected val threshold: Int = problem.dimensions * 10,
     populationSize: Int = problem.dimensions * 10,
     entryPolicy: EntryPolicy = EntryPolicy.CLOSED_BORDER
-) : DefaultExecution<T>(name, problem, monitor, sampler, populationSize, entryPolicy) {
+) : SimpleExecution<T>(name, problem, monitor, sampler, populationSize, entryPolicy) {
 
     protected var stagnation: Int = 0
 
