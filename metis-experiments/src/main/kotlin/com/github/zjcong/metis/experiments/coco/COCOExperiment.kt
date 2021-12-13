@@ -43,7 +43,7 @@ val LOGLEVEL = LogLevel.WARN
 @Suppress("unused", "SameParameterValue")
 private fun engineOf(
     name: String,
-    problem: SingleObjectiveCOCOProblem,
+    problem: SingleObjectiveCOCOSingleObjectiveProblem,
     population: Int,
     seed: Int,
 ): Execution<DoubleArray> {
@@ -222,7 +222,7 @@ private fun engineOf(
  */
 fun runExperiment(benchmark: COCOBenchmark) {
 
-    var problem: SingleObjectiveCOCOProblem? = benchmark.nextProblem
+    var problem: SingleObjectiveCOCOSingleObjectiveProblem? = benchmark.nextProblem
 
     val timing = Timing()
 

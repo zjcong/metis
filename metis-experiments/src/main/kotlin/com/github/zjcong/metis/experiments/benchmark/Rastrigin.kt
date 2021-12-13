@@ -21,7 +21,7 @@ import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.pow
 
-class Rastrigin(d: Int) : ContinuousBenchmarkProblem(d) {
+class Rastrigin(d: Int) : ContinuousBenchmarkSingleObjectiveProblem(d) {
 
     private val A = 10
     override val lowerBound: Double = -5.12

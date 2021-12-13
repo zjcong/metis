@@ -15,16 +15,24 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.github.zjcong.metis.experiments.benchmark
+package com.github.zjcong.metis.problem
 
-import kotlin.math.abs
+import com.github.zjcong.metis.Population
 
-class LinearSlop(dimensions: Int) : ContinuousBenchmarkSingleObjectiveProblem(dimensions) {
-    override val upperBound: Double = 5.0
-    override val lowerBound: Double = -5.0
-    override val globalOptima: Double = 0.0
+@Suppress("MemberVisibilityCanBePrivate")
+abstract class MultiObjectiveProblem<T> : Problem<T> {
 
-    override fun objective(solution: DoubleArray): Double {
-        return solution.sumOf { 5.0 * abs(it) }
+    abstract val objectives: Set<SingleObjectiveProblem<T>>
+
+
+    /**
+     * Evaluate a population
+     *
+     * @param population
+     * @return
+     */
+    override operator fun invoke(population: Population): DoubleArray {
+        objectives.map {  }
+        TODO()
     }
 }

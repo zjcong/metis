@@ -19,8 +19,9 @@ package com.github.zjcong.metis.extra.engine
 
 import com.github.zjcong.metis.execution.Execution
 import com.github.zjcong.metis.Monitor
-import com.github.zjcong.metis.Problem
+import com.github.zjcong.metis.problem.SingleObjectiveProblem
 import com.github.zjcong.metis.execution.IslandExecution
+import com.github.zjcong.metis.problem.Problem
 
 open class CharityIsland<T>(
     override val name: String,

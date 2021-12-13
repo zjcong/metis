@@ -31,7 +31,12 @@ private class ExperimentMonitor<T> : DefaultMonitor<T>(LogLevel.INFO) {
     val history: MutableList<Pair<Long, Double>> = mutableListOf()
 
     override fun onIteration(execution: Execution<T>) {
-        history.add(Pair(execution.evaluations, execution.bestSolution.fitness))
+        if (execution.iterations.rem(100L) == 0L || execution.iterations == 1L)
+            history.add(
+                Pair(
+                    execution.evaluations, execution.bestSolution.fitness
+                )
+            )
         super.onIteration(execution)
     }
 
@@ -42,8 +47,7 @@ private class ExperimentMonitor<T> : DefaultMonitor<T>(LogLevel.INFO) {
  *
  */
 class SimpleExperiment<T>(
-    names: Set<String>,
-    enginesOf: (name: String, monitor: Monitor<T>) -> Execution<T>
+    names: Set<String>, enginesOf: (name: String, monitor: Monitor<T>) -> Execution<T>
 ) {
 
     private val engines: Map<String, Execution<T>>

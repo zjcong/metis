@@ -19,7 +19,7 @@ package com.github.zjcong.metis.experiments.benchmark
 
 import kotlin.math.*
 
-open class Ackley(d: Int) : ContinuousBenchmarkProblem(d) {
+open class Ackley(d: Int) : ContinuousBenchmarkSingleObjectiveProblem(d) {
 
     override val lowerBound: Double = -32.70
     override val upperBound: Double = 32.70

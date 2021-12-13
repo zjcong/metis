@@ -17,13 +17,13 @@
 
 package com.github.zjcong.metis.experiments.benchmark.tsp
 
-import com.github.zjcong.metis.Goal
+import com.github.zjcong.metis.problem.Goal
 import com.github.zjcong.metis.Individual
-import com.github.zjcong.metis.Problem
+import com.github.zjcong.metis.problem.SingleObjectiveProblem
 import com.github.zjcong.metis.execution.Execution
 
 
-abstract class TSP(override val dimensions: Int) : Problem<IntArray> {
+abstract class TSP(override val dimensions: Int) : SingleObjectiveProblem<IntArray>() {
 
     override val goal: Goal = Goal.Minimize
 

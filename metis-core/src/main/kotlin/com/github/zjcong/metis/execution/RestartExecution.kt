@@ -20,6 +20,7 @@ package com.github.zjcong.metis.execution
 
 
 import com.github.zjcong.metis.*
+import com.github.zjcong.metis.problem.Problem
 import com.github.zjcong.metis.samplers.Sampler
 
 /**
@@ -31,7 +32,7 @@ open class RestartExecution<T>(
     sampler: Sampler,
     monitor: Monitor<T>,
     protected val threshold: Int = problem.dimensions * 10,
-    populationSize: Int = problem.dimensions * 10,
+    populationSize: Int = problem.dimensions * 5,
     entryPolicy: EntryPolicy = EntryPolicy.CLOSED_BORDER
 ) : SimpleExecution<T>(name, problem, monitor, sampler, populationSize, entryPolicy) {
 

@@ -19,7 +19,7 @@ package com.github.zjcong.metis.experiments.benchmark
 
 import kotlin.math.pow
 
-class Sphere(d: Int) : ContinuousBenchmarkProblem(d) {
+class Sphere(d: Int) : ContinuousBenchmarkSingleObjectiveProblem(d) {
 
     override val lowerBound: Double = -5.12
     override val upperBound: Double = 5.12

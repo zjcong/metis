@@ -15,47 +15,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.github.zjcong.metis
+package com.github.zjcong.metis.problem
 
-import com.github.zjcong.metis.execution.Execution
-import java.io.Serializable
+import com.github.zjcong.metis.Population
 
-
-/**
- * Goal type
- *
- * @property value
- */
-enum class Goal(private val value: Int) {
-    Maximize(-1), Minimize(1);
-
-    operator fun times(value: Double): Double = value * this.value
-}
 
 /**
  * Problem interface
  *
  * @param T Type of actual solution
  */
-interface Problem<T> : Serializable {
+abstract class SingleObjectiveProblem<T> : Problem<T> {
 
     /**
      * Goal (maximize or minimize)
      */
-    val goal: Goal
-
-    /**
-     * Dimensions
-     */
-    val dimensions: Int
-
-    /**
-     * Decode random keys into actual solution
-     *
-     * @param individual
-     * @return
-     */
-    fun decode(individual: Individual): T
+    abstract val goal: Goal
 
     /**
      * Objective function
@@ -63,23 +38,7 @@ interface Problem<T> : Serializable {
      * @param solution
      * @return fitness value
      */
-    fun objective(solution: T): Double
-
-    /**
-     * If a solution is feasible
-     *
-     * @param solution
-     * @return
-     */
-    fun isFeasible(solution: T): Boolean
-
-    /**
-     * Stop condition
-     *
-     * @param execution
-     * @return
-     */
-    fun shouldStop(execution: Execution<T>): Boolean
+    protected abstract fun objective(solution: T): Double
 
     /**
      * Evaluate a population
@@ -87,7 +46,7 @@ interface Problem<T> : Serializable {
      * @param population
      * @return
      */
-    operator fun invoke(population: Population): DoubleArray {
+    override operator fun invoke(population: Population): DoubleArray {
         return population.map { individual ->
             if (individual.any { it !in 0.0..1.0 }) Double.MAX_VALUE
             else {
@@ -99,12 +58,13 @@ interface Problem<T> : Serializable {
     }
 }
 
+
 /**
  * TODO
  *
  * @param T
  */
-interface ParallelProblem<T> : Problem<T> {
+abstract class ParallelSingleObjectiveProblem<T> : SingleObjectiveProblem<T>() {
     override fun invoke(population: Population): DoubleArray {
         return population.toList().parallelStream().mapToDouble { individual ->
             if (individual.any { it !in 0.0..1.0 }) Double.MAX_VALUE
@@ -116,9 +76,6 @@ interface ParallelProblem<T> : Problem<T> {
         }.toArray()
     }
 }
-
-
-
 
 
 

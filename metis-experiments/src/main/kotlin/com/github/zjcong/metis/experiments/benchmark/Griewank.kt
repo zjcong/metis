@@ -21,7 +21,7 @@ import kotlin.math.cos
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class Griewank(dimensions: Int) : ContinuousBenchmarkProblem(dimensions) {
+class Griewank(dimensions: Int) : ContinuousBenchmarkSingleObjectiveProblem(dimensions) {
     override val lowerBound: Double = -600.0
     override val upperBound: Double = 600.0
     override val globalOptima: Double = 0.0

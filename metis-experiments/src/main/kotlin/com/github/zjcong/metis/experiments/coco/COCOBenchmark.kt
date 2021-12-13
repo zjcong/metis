@@ -50,7 +50,7 @@ sealed class COCOBenchmark(
     private val observer = Observer(observerName, observationOptions)
     protected val benchmark = Benchmark(suite, observer)
 
-    internal abstract val nextProblem: SingleObjectiveCOCOProblem?
+    internal abstract val nextProblem: SingleObjectiveCOCOSingleObjectiveProblem?
 }
 
 
@@ -65,14 +65,14 @@ class BBOBBenchmark(
 ) : COCOBenchmark(algorithmName, algorithmInfo, "bbob", suiteOptions, maxEvaluationsMultiplier) {
 
 
-    override val nextProblem: SingleObjectiveCOCOProblem?
+    override val nextProblem: SingleObjectiveCOCOSingleObjectiveProblem?
         get() {
             val cocoProblem = benchmark.nextProblem
             if (cocoProblem == null) {
                 benchmark.finalizeBenchmark()
                 return null
             }
-            return ContinuousCOCOProblem(cocoProblem)
+            return ContinuousCOCOSingleObjectiveProblem(cocoProblem)
         }
 
     companion object {
@@ -101,14 +101,14 @@ class BBOBBMixIntBenchmark(
 ) : COCOBenchmark(algorithmName, algorithmInfo, "bbob-mixint", suiteOptions, maxEvaluationsMultiplier) {
 
 
-    override val nextProblem: SingleObjectiveCOCOProblem?
+    override val nextProblem: SingleObjectiveCOCOSingleObjectiveProblem?
         get() {
             val cocoProblem = benchmark.nextProblem
             if (cocoProblem == null) {
                 benchmark.finalizeBenchmark()
                 return null
             }
-            return MixIntCOCOProblem(cocoProblem)
+            return MixIntCOCOSingleObjectiveProblem(cocoProblem)
         }
 
 

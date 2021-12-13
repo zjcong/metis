@@ -20,6 +20,8 @@
 package com.github.zjcong.metis.execution
 
 import com.github.zjcong.metis.*
+import com.github.zjcong.metis.problem.Problem
+import com.github.zjcong.metis.problem.SingleObjectiveProblem
 import kotlin.random.Random
 
 
@@ -38,6 +40,12 @@ open class IslandExecution<T>(
     protected val rng: Random = Random(seed)
 
     override var populationSize: Int = islands.sumOf { it.populationSize }
+
+    override var population: Population
+        get() = islands.flatMap { it.population }.asPopulation()
+        set(_) {
+            throw IllegalAccessException("Set population is not allowed in this execution")
+        }
 
     open fun migratePolicy() {
         if (iterations.rem(migrationFrequency) != 0L || iterations < migrationFrequency) return

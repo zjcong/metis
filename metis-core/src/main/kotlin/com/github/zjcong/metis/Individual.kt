@@ -61,7 +61,7 @@ fun DoubleArray.asIndividual(): Individual = Individual(this)
 
 
 /**
- * TODO
+ * An evaluated individual, basically an individual with a fitness value attached
  *
  * @property keys
  * @property fitness

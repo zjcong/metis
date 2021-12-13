@@ -19,6 +19,7 @@ package com.github.zjcong.metis.extra.engine
 
 import com.github.zjcong.metis.*
 import com.github.zjcong.metis.execution.RestartExecution
+import com.github.zjcong.metis.problem.Problem
 import com.github.zjcong.metis.samplers.Sampler
 import kotlin.math.roundToInt
 

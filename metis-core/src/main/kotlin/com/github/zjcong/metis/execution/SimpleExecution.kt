@@ -19,6 +19,7 @@
 package com.github.zjcong.metis.execution
 
 import com.github.zjcong.metis.*
+import com.github.zjcong.metis.problem.Problem
 import com.github.zjcong.metis.samplers.Sampler
 import kotlin.math.sign
 
@@ -32,7 +33,7 @@ open class SimpleExecution<T>(
     protected val entryPolicy: EntryPolicy = EntryPolicy.CLOSED_BORDER
 ) : Execution<T>() {
 
-    var population: Population = Population()
+    override var population: Population = Population()
 
     /**
      * Update fitness

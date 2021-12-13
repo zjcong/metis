@@ -20,12 +20,15 @@ package com.github.zjcong.metis.experiments.coco
 import CocoProblem
 import com.github.zjcong.metis.*
 import com.github.zjcong.metis.execution.Execution
+import com.github.zjcong.metis.problem.Goal
+import com.github.zjcong.metis.problem.SingleObjectiveProblem
 import com.github.zjcong.metis.valueIn
 
 /**
  *
  */
-abstract class SingleObjectiveCOCOProblem(val cocoProblem: CocoProblem) : Problem<DoubleArray> {
+abstract class SingleObjectiveCOCOSingleObjectiveProblem(val cocoProblem: CocoProblem) :
+    SingleObjectiveProblem<DoubleArray>() {
 
     override val dimensions: Int
         get() = cocoProblem.dimension
@@ -57,7 +60,8 @@ abstract class SingleObjectiveCOCOProblem(val cocoProblem: CocoProblem) : Proble
 /**
  * Continuous problem
  */
-internal class ContinuousCOCOProblem(cocoProblem: CocoProblem) : SingleObjectiveCOCOProblem(cocoProblem) {
+internal class ContinuousCOCOSingleObjectiveProblem(cocoProblem: CocoProblem) :
+    SingleObjectiveCOCOSingleObjectiveProblem(cocoProblem) {
 
     override fun decode(individual: Individual): DoubleArray {
         val keys = individual.keys
@@ -73,9 +77,9 @@ internal class ContinuousCOCOProblem(cocoProblem: CocoProblem) : SingleObjective
 /**
  * Mix Int problem
  */
-internal class MixIntCOCOProblem(
+internal class MixIntCOCOSingleObjectiveProblem(
     cocoProblem: CocoProblem,
-) : SingleObjectiveCOCOProblem(cocoProblem) {
+) : SingleObjectiveCOCOSingleObjectiveProblem(cocoProblem) {
 
     override fun decode(individual: Individual): DoubleArray {
         val keys = individual.keys

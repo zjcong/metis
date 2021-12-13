@@ -20,7 +20,7 @@ package com.github.zjcong.metis.experiments.benchmark
 import kotlin.math.abs
 import kotlin.math.pow
 
-class SumOfDifferentPowers(d: Int) : ContinuousBenchmarkProblem(d) {
+class SumOfDifferentPowers(d: Int) : ContinuousBenchmarkSingleObjectiveProblem(d) {
 
     override val lowerBound: Double = -1.0
     override val upperBound: Double = 1.0

@@ -19,7 +19,7 @@ package com.github.zjcong.metis.experiments.benchmark
 
 import kotlin.math.pow
 
-class Rosenbrock(d: Int) : ContinuousBenchmarkProblem(d) {
+class Rosenbrock(d: Int) : ContinuousBenchmarkSingleObjectiveProblem(d) {
 
     override val lowerBound: Double = -5.0
     override val upperBound: Double = 10.0

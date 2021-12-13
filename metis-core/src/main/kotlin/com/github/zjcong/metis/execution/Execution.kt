@@ -19,6 +19,7 @@
 package com.github.zjcong.metis.execution
 
 import com.github.zjcong.metis.*
+import com.github.zjcong.metis.problem.Problem
 import java.io.*
 
 /**
@@ -35,6 +36,10 @@ abstract class Execution<T> : Serializable {
 
 
     abstract var populationSize: Int
+
+
+    abstract var population: Population
+        protected set
 
     /**
      * Monitor

@@ -22,7 +22,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 
-class Schwefel(d: Int) : ContinuousBenchmarkProblem(d) {
+class Schwefel(d: Int) : ContinuousBenchmarkSingleObjectiveProblem(d) {
 
     override val lowerBound: Double = -500.0
     override val upperBound: Double = 500.0
